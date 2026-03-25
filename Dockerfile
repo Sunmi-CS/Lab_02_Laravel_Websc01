@@ -23,7 +23,7 @@ RUN composer install --no-dev --optimize-autoloader
 EXPOSE 10000
 
 # Comando para iniciar
-CMD php artisan serve --host=0.0.0.0 --port=10000
-
-RUN php artisan config:clear
-RUN php artisan cache:clear
+CMD php artisan config:clear && \
+    php artisan cache:clear && \
+    php artisan key:generate && \
+    php artisan serve --host=0.0.0.0 --port=10000
